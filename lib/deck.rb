@@ -14,7 +14,7 @@ class Deck
   end
 
   def percent_high_ranking
-    # @cards. {|card| card.rank >= 11}
+    (high_ranking_cards.length / @cards.length.to_f).round(4) * 100
   end
 
   def remove_card
