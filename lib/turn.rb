@@ -21,12 +21,27 @@ class Turn
 
   def winner
     if type == :basic
-      # return player with higher rank_of_card(0)
+      if @player1.deck.rank_of_card_at(0) > @player2.deck.rank_of_card_at(0)
+        @player1
+      else
+        @player2
+      end
     elsif type == :war
-      # return whichever player has a higher rank_of_card(2)
+      if @player1.deck.rank_of_card_at(2) > @player2.deck.rank_of_card_at(2)
+        @player1
+      else
+        @player2
+      end
     else type == :mutually_assured_destruction
       "No Winner"
     end
+  end
+
+  def pile_of_cards
+    @spoils_of_war << cards
+  end
+
+  def.award_spoils(winner)
   end
 
 end
