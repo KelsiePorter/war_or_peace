@@ -45,15 +45,13 @@ RSpec.describe Player do
 
     expect(player.has_lost?).to be false
     expect(player.deck.remove_card).to eq(card1)
-    #why do the square brackets around card1 cause error?
     expect(player.deck.cards.length).to eq(2)
     expect(player.has_lost?).to be false
     expect(player.deck.remove_card).to eq(card2)
     expect(player.deck.cards.length).to eq(1)
     expect(player.deck.remove_card).to eq(card3)
     expect(player.deck.cards.length).to eq(0)
-    # expect(player.has_lost?).to be true
-    #What is wrong with my remove_card method???
+    expect(player.has_lost?).to be true
     expect(player.deck).to eq(deck)
   end
 
