@@ -38,10 +38,17 @@ class Turn
   end
 
   def pile_of_cards
-    @spoils_of_war << cards
+    if type == :basic
+      @spoils_of_war << @player1.deck.cards([0] && @player2.deck.cards[0]
+    elsif type == :war
+      @spoils_of_war << @player1.deck.cards[0..2] && @player2.deck.cards[0..2]
+    else type == :mutually_assured_destruction
+      @player1.deck.cards[0..2].delete && @player2.deck.cards[0..2].delete
+    end
   end
 
-  def.award_spoils(winner)
-  end
+  # def award_spoils(winner)
+  #   << @spoils_of_war
+  # end
 
 end

@@ -36,8 +36,15 @@ RSpec.describe Turn do
   end
 
   it "each turn may have a winner" do
-
+    expect(@turn.type).to eq(:basic)
     expect(@turn.winner).to eq(@player1)
+  end
+
+  it "the pile of cards is growing" do
+    @turn.winner
+    @turn.pile_of_cards
+    binding.pry
+    # expect(@turn.spoils_of_war).to eq
   end
 
 
