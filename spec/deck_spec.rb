@@ -69,14 +69,12 @@ RSpec.describe Deck do
     cards = [card1, card2, card3]
 
     deck = Deck.new(cards)
-    # deck.remove_card
+
     expect(deck.remove_card).to eq(card1)
-    #when I had sqaure brackets around card 1, I was getting an error
     expect(deck.cards).to eq([card2, card3])
     expect(deck.cards.count).to eq(2)
     expect(deck.high_ranking_cards).to eq([card3])
-    # expect(deck.percent_high_ranking).to eq(50.0)
-    #can't figure out how to return a percent
+    expect(deck.percent_high_ranking).to eq(50.0)
   end
 
   it "adds a new card to the deck" do
@@ -92,7 +90,7 @@ RSpec.describe Deck do
 
     expect(deck.cards).to eq([card2, card3, card4])
     expect(deck.high_ranking_cards).to eq([card3])
-    # expect(deck.percent_high_ranking).to eq(33.33)
+    expect(deck.percent_high_ranking).to eq(33.33)
   end
 
-  end
+end
