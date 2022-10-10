@@ -1,3 +1,5 @@
+require 'pry'
+
 class Turn
   attr_reader :player1,
               :player2,
@@ -39,8 +41,8 @@ class Turn
 
   def pile_cards
     if type == :basic
-      @spoils_of_war << @player1.deck.cards[0]
-      @spoils_of_war << @player2.deck.cards[0]
+      @spoils_of_war << @player1.deck.remove_card
+      @spoils_of_war << @player2.deck.remove_card
     elsif type == :war
       @spoils_of_war << @player1.deck.cards[0..2]
       @spoils_of_war << @player2.deck.cards[0..2]
@@ -49,14 +51,13 @@ class Turn
         @player1.deck.remove_card
       end
       3.times do
-        @player2.deck.remove_card 
+        @player2.deck.remove_card
       end
     end
   end
 
   def award_spoils(winner)
-    winner.deck.cards.push << @spoils_of_war
-    # ??? Do I need .push?
+    @spoils_of_war.each {|card| winner.deck.add_card(card)}
   end
 
 end

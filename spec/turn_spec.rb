@@ -21,7 +21,7 @@ RSpec.describe Turn do
     @player2 = Player.new("Aurora", @deck2)
     @turn = Turn.new(@player1, @player2)
   end
-  
+
   it "create a deck of cards for each player" do
 
     expect(@turn.player1).to eq(@player1)
@@ -48,11 +48,15 @@ RSpec.describe Turn do
     expect(@turn.spoils_of_war).to eq([@card1, @card3])
   end
 
-  xit "the winner's deck is growing" do
+  it "the winner's deck is growing" do
 
+    winner = @turn.winner
     @turn.pile_cards
-    @turn.spoils_of_war
-    expect(@player1.deck).to eq([@card1, @card2, @card5, @card8, @card3])
+    @turn.award_spoils(winner)
+    expect(@player1.deck).to eq(@deck1)
+    expect(@player2.deck).to eq(@deck2)
+    expect(@player1.deck.cards).to eq([@card2, @card5, @card8, @card1, @card3])
+    expect(@player2.deck.cards).to eq([@card4, @card6, @card7])
   end
 
 
